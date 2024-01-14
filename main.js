@@ -1,5 +1,6 @@
 function baitap1() {
     var Ten, Tuoi; // Khai báo 2 biến để lưu tên và tuổi
+    
 
     //Kiểm tra điều kiện tên không được bỏ trống , sử dụng do while để chạy vòng lập 
     do {
@@ -56,6 +57,8 @@ function baitap4() {
     var tuoi = namHienTai - parseInt(namSinh);
 
     alert("Tuổi của bạn bây giờ là: " + tuoi);
+
+    parent
 }
 
 function baitap5() {
@@ -71,3 +74,46 @@ function baitap5() {
     default : window.open("https://inet.vn"); // trường hợp không nhập 
 }
 }
+
+// Tìm hiều sự khác nhau giữa var, let , const 
+
+// var, ví dụ trong 1 funtion, khi khai báo biến bằng var thì phạm vi sử dụng chỉ được sử dụng trong function đó
+// var có thể bị khai báo 
+// có thể gán lại các giá trị biến khi nằm trong phạm vi 
+
+function inforVar() {
+  if(true)  {
+    var nameVar = 'kiennt';
+    // console.log(nameVar); // chỉ có thể truy cập được trong phạm vi function 
+    var nameVar = 'kiennt2'; // var còn có thể bị khai báo đè
+    // console.log(nameVar); // sẽ nhận giá trị giá trị kiennt2 
+  }
+//   console.log(nameVar);// vẫn có thể truy cập được vào biến
+}
+    console.log(nameVar) // bên ngoài phạm vi function không thể truy cập được tới biến (lỗi)
+
+
+function inforLet() {
+    if(true)
+    {
+        let numberLet = 20 ;
+        numberLet = 45 // có thể gán lại các giá trị biến khi nằm trong phạm vi 
+        console.log(numberLet); // Phạm vi let hoạt động thu hẹp hơn var , nhưng không bị ghi đè (phạm vi hiện tại là dấu {})
+    }
+
+    console.log(n); // bên ngoài phạm vi của let nên sẽ lỗi , nếu là var thì vẫn in ra được 
+
+}
+
+function inforConst() {
+    if(true)
+    {
+        const numberConst = 20 ;
+        numberConst = 45 // Giá trị của biến không bị thay đổi , giữ 1 giá trị duy nhất (lỗi)
+        console.log(numberConst); // Phạm vi const  hoạt động thu hẹp hơn var , nhưng không bị ghi đè (phạm vi hiện tại là dấu {}) 20
+    }
+
+
+}
+
+ 
