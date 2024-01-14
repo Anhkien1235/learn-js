@@ -84,11 +84,16 @@ function baitap5() {
 function inforVar() {
   if(true)  {
     var nameVar = 'kiennt';
-    // console.log(nameVar); // chỉ có thể truy cập được trong phạm vi function 
+    console.log(nameVar); // chỉ có thể truy cập được trong phạm vi function 
     var nameVar = 'kiennt2'; // var còn có thể bị khai báo đè
-    // console.log(nameVar); // sẽ nhận giá trị giá trị kiennt2 
+    console.log(nameVar); // sẽ nhận giá trị giá trị kiennt2 
+
+    numberVar =1;
+    
+    console.log(numberVar)
+
   }
-//   console.log(nameVar);// vẫn có thể truy cập được vào biến
+  console.log(nameVar);// vẫn có thể truy cập được vào biến
 }
     console.log(nameVar) // bên ngoài phạm vi function không thể truy cập được tới biến (lỗi)
 
