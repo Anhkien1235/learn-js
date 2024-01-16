@@ -88,9 +88,8 @@ function inforVar() {
     var nameVar = 'kiennt2'; // var còn có thể bị khai báo đè
     console.log(nameVar); // sẽ nhận giá trị giá trị kiennt2 
 
-    numberVar =1;
-    
-    console.log(numberVar)
+    numberVar =1;   // var được hộ trợ hosting .  khi viết như trên sẽ được thông dịch là : var a;  a = 1; 
+    console.log(numberVar) // giá trị bằng 1 
 
   }
   console.log(nameVar);// vẫn có thể truy cập được vào biến
@@ -98,7 +97,7 @@ function inforVar() {
     console.log(nameVar) // bên ngoài phạm vi function không thể truy cập được tới biến (lỗi)
 
 
-function inforLet() {
+function inforLet() { // không hỗ trợ hosting
     if(true)
     {
         let numberLet = 20 ;
@@ -110,15 +109,101 @@ function inforLet() {
 
 }
 
-function inforConst() {
+function inforConst() {  // không hỗ trợ hosting
     if(true)
     {
         const numberConst = 20 ;
-        numberConst = 45 // Giá trị của biến không bị thay đổi , giữ 1 giá trị duy nhất (lỗi)
+        numberConst = 45 // Giá trị của biến không bị thay đổi , giữ 1 giá trị duy nhất (lỗi) , không thể sử dụng toán tử gán đến lần thứ 2
         console.log(numberConst); // Phạm vi const  hoạt động thu hẹp hơn var , nhưng không bị ghi đè (phạm vi hiện tại là dấu {}) 20
     }
 
+}
 
+// KHI NÀO THÌ SỬ DỤNG LET VÀ CONST
+// Khi đinh nghĩa biến và không gán lại biến đó  thì sử dụng Const
+// Khi cần gán lại giá trị thì sử dụng Let
+
+
+// Bài tập , nhập vào 1 số, kiểm tra xem đó là số gì? 
+
+function kiemtraso(){
+    const numberInput = prompt('Vui long nhap 1 so: ');
+    
+    const number = parseFloat(numberInput); //chuyển đổi giá trị nhập vào từ dạng chuỗi sang số vd: nhập "123abc" trả về 123, "abc" trả về NaN , ko phải dạng số
+
+    if(!isNaN(number)){ // Kiểm tra xem có phải dạng số hay không
+        if(Number.isInteger(number)){ // Number.isIntehger kiểm tra xem đó có phải số nguyên hay không
+            alert("Đây là số nguyên")
+        } else{
+            alert("Đây là số thập phân")
+        }
+    } else{
+        alert("Đây không phải là số")
+    }
+}
+
+// Bài tập if else cơ bản
+
+function giaiptb2() {
+    const numberA = prompt("Nhập hệ số A: ");
+    const numberB = prompt("Nhập hệ số B: ");
+    const numberC = prompt("Nhập hệ số C: ");
+
+    const delta = (numberB ** 2) - (4 * numberA * numberC);
+
+    if(delta == 0){
+        alert("Phương tring có nghiệm kép: " + (-numberB/(2*numberA)))
+    }
+    else if( delta > 0) {
+        alert('Phương trình có 2 nghiệm phân biệt ' + ' x1= '+ ((-numberB + Math.sqrt(delta))/(2*numberA)) + ' ; ' + ' x2= '+ ((-numberB - Math.sqrt(delta))/(2*numberA)))
+    }
+    else{
+        alert("Phương trình vô nghiệm")
+    }
+}
+
+function kiemtratamgiac() {
+    const canhA = prompt("Nhập cạnh A: ");
+    const canhB = prompt("Nhập cạnh B: ");
+    const canhC = prompt("Nhập cạnh C: ");
+
+    if(canhA + canhB > canhC && canhB + canhC > canhA && canhA + canhC > canhB){
+        if(canhA === canhB && canhB === canhC){
+            alert('đây là tam giac đều')
+        } else if(canhA === canhB || canhA === canhC || canhB === canhC) 
+        {
+            alert('Đây là tam giác cân')
+        } else if(canhA ** 2 === (canhB**2 + canhC**2) || canhB**2===(canhA**2 + canhC**2 || canhC**2 === canhA**2 + canhB**2))
+        {
+            alert('Đây là tam giác vuông')
+        } else{
+            alert('Đây là tam giác thường')
+        }
+    }else{
+        alert('3 cạnh trên không tạo thành một tam giác')
+    }
+}
+
+
+// bài tập vòng lập while cơ bản
+// Nhập vào 1 số tỉnh tổng các số chãn từ 0 - n
+
+function tinhTong() {
+    const numberN = prompt('Nhập vào 1 số : ');
+    let Tong = 0;
+    let bienDem = 0;
+
+    while(bienDem <= numberN)
+    {
+        if(bienDem % 2 ==0){
+            Tong += bienDem;
+
+        }
+
+        bienDem++;
+    }
+
+    alert('Tổng số chẵn từ 1 đến ' + numberN + " bằng : " + Tong);
 }
 
  
