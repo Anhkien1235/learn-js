@@ -82,42 +82,42 @@ function baitap5() {
 // có thể gán lại các giá trị biến khi nằm trong phạm vi 
 
 function inforVar() {
-  if(true)  {
+  function innerFunction() {
     var nameVar = 'kiennt';
     console.log(nameVar); // chỉ có thể truy cập được trong phạm vi function 
     var nameVar = 'kiennt2'; // var còn có thể bị khai báo đè
     console.log(nameVar); // sẽ nhận giá trị giá trị kiennt2 
 
-    numberVar =1;   // var được hộ trợ hosting .  khi viết như trên sẽ được thông dịch là : var a;  a = 1; 
+    numberVar = 1;   // var được hỗ trợ hosting .  khi viết như trên sẽ được thông dịch là : var a;  a = 1; 
     console.log(numberVar) // giá trị bằng 1 
-
   }
-  console.log(nameVar);// vẫn có thể truy cập được vào biến
+
+  innerFunction();
+
+  console.log(nameVar); // vẫn có thể truy cập được vào biến
 }
-    console.log(nameVar) // bên ngoài phạm vi function không thể truy cập được tới biến (lỗi)
+
+console.log(nameVar); // bên ngoài phạm vi function không thể truy cập được tới biến (lỗi)
 
 
-function inforLet() { // không hỗ trợ hosting
-    if(true)
-    {
-        let numberLet = 20 ;
-        numberLet = 45 // có thể gán lại các giá trị biến khi nằm trong phạm vi 
-        console.log(numberLet); // Phạm vi let hoạt động thu hẹp hơn var , nhưng không bị ghi đè (phạm vi hiện tại là dấu {})
+
+function inforLet() {
+    function innerFunction() {
+      let numberLet = 20;
+      numberLet = 45; // có thể gán lại các giá trị biến khi nằm trong phạm vi
+      console.log(numberLet); // Phạm vi let hoạt động thu hẹp hơn var, nhưng không bị ghi đè (phạm vi hiện tại là dấu {})
     }
+  
+    console.log(n); // bên ngoài phạm vi của let nên sẽ lỗi, nếu là var thì vẫn in ra được
+  }
 
-    console.log(n); // bên ngoài phạm vi của let nên sẽ lỗi , nếu là var thì vẫn in ra được 
-
-}
-
-function inforConst() {  // không hỗ trợ hosting
-    if(true)
-    {
-        const numberConst = 20 ;
-        numberConst = 45 // Giá trị của biến không bị thay đổi , giữ 1 giá trị duy nhất (lỗi) , không thể sử dụng toán tử gán đến lần thứ 2
-        console.log(numberConst); // Phạm vi const  hoạt động thu hẹp hơn var , nhưng không bị ghi đè (phạm vi hiện tại là dấu {}) 20
+  function inforConst() {
+    function innerFunction() {
+      const numberConst = 20;
+      // numberConst = 45; // Lỗi - không thể gán lại giá trị cho const
+      console.log(numberConst); // Phạm vi const hoạt động thu hẹp hơn var, không bị ghi đè (phạm vi hiện tại là dấu {}) 20
     }
-
-}
+  }
 
 // KHI NÀO THÌ SỬ DỤNG LET VÀ CONST
 // Khi đinh nghĩa biến và không gán lại biến đó  thì sử dụng Const
@@ -163,26 +163,46 @@ function giaiptb2() {
 }
 
 function kiemtratamgiac() {
-    const canhA = prompt("Nhập cạnh A: ");
-    const canhB = prompt("Nhập cạnh B: ");
-    const canhC = prompt("Nhập cạnh C: ");
+    function nhapSo(message) {
+        let input;
+        do {
+            input = prompt(message);
+            if (input === null) return null; // Nếu người dùng nhấn Cancel, trả về null
+            if (input.trim() === '' || isNaN(input)) {
+                alert('Vui lòng nhập một số hợp lệ.');
+            }
+        } while (input.trim() === '' || isNaN(input));
 
-    if(canhA + canhB > canhC && canhB + canhC > canhA && canhA + canhC > canhB){
-        if(canhA === canhB && canhB === canhC){
-            alert('đây là tam giac đều')
-        } else if(canhA === canhB || canhA === canhC || canhB === canhC) 
-        {
-            alert('Đây là tam giác cân')
-        } else if(canhA ** 2 === (canhB**2 + canhC**2) || canhB**2===(canhA**2 + canhC**2 || canhC**2 === canhA**2 + canhB**2))
-        {
-            alert('Đây là tam giác vuông')
-        } else{
-            alert('Đây là tam giác thường')
+        return Number(input);
+    }
+
+    const canhA = nhapSo("Nhập cạnh A: ");
+    if (canhA === null) return; // Người dùng nhấn Cancel
+
+    const canhB = nhapSo("Nhập cạnh B: ");
+    if (canhB === null) return;
+
+    const canhC = nhapSo("Nhập cạnh C: ");
+    if (canhC === null) return;
+
+    if (canhA + canhB > canhC && canhB + canhC > canhA && canhA + canhC > canhB) {
+        if (canhA === canhB && canhB === canhC) {
+            alert('Đây là tam giác đều');
+        } else if (canhA === canhB || canhA === canhC || canhB === canhC) {
+            alert('Đây là tam giác cân');
+        } else if (canhA ** 2 === (canhB**2 + canhC**2) || canhB**2 === (canhA**2 + canhC**2) || canhC**2 === (canhA**2 + canhB**2)) {
+            alert('Đây là tam giác vuông');
+        } else {
+            alert('Đây là tam giác thường');
         }
-    }else{
-        alert('3 cạnh trên không tạo thành một tam giác')
+    } else {
+        alert('3 cạnh trên không tạo thành một tam giác');
     }
 }
+
+// Gọi hàm để kiểm tra tam giác và nhập số
+kiemtratamgiac();
+
 
 
 // bài tập vòng lập while cơ bản
@@ -205,5 +225,21 @@ function tinhTong() {
 
     alert('Tổng số chẵn từ 1 đến ' + numberN + " bằng : " + Tong);
 }
+
+
+function kiemtraEmail() {
+    const email = prompt('Nhập Email: ');
+
+   
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(email)) {
+        alert('Email hợp lệ')
+    } else {
+        alert('Email không hợp lệ')
+
+    }
+}
+
 
  
