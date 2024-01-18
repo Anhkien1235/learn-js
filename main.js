@@ -108,6 +108,8 @@ function inforLet() {
       console.log(numberLet); // Phạm vi let hoạt động thu hẹp hơn var, nhưng không bị ghi đè (phạm vi hiện tại là dấu {})
     }
   
+    innerFunction();
+  
     console.log(n); // bên ngoài phạm vi của let nên sẽ lỗi, nếu là var thì vẫn in ra được
   }
 
@@ -117,6 +119,7 @@ function inforLet() {
       // numberConst = 45; // Lỗi - không thể gán lại giá trị cho const
       console.log(numberConst); // Phạm vi const hoạt động thu hẹp hơn var, không bị ghi đè (phạm vi hiện tại là dấu {}) 20
     }
+  
   }
 
 // KHI NÀO THÌ SỬ DỤNG LET VÀ CONST
@@ -163,46 +166,26 @@ function giaiptb2() {
 }
 
 function kiemtratamgiac() {
-    function nhapSo(message) {
-        let input;
-        do {
-            input = prompt(message);
-            if (input === null) return null; // Nếu người dùng nhấn Cancel, trả về null
-            if (input.trim() === '' || isNaN(input)) {
-                alert('Vui lòng nhập một số hợp lệ.');
-            }
-        } while (input.trim() === '' || isNaN(input));
+    const canhA = prompt("Nhập cạnh A: ");
+    const canhB = prompt("Nhập cạnh B: ");
+    const canhC = prompt("Nhập cạnh C: ");
 
-        return Number(input);
-    }
-
-    const canhA = nhapSo("Nhập cạnh A: ");
-    if (canhA === null) return; // Người dùng nhấn Cancel
-
-    const canhB = nhapSo("Nhập cạnh B: ");
-    if (canhB === null) return;
-
-    const canhC = nhapSo("Nhập cạnh C: ");
-    if (canhC === null) return;
-
-    if (canhA + canhB > canhC && canhB + canhC > canhA && canhA + canhC > canhB) {
-        if (canhA === canhB && canhB === canhC) {
-            alert('Đây là tam giác đều');
-        } else if (canhA === canhB || canhA === canhC || canhB === canhC) {
-            alert('Đây là tam giác cân');
-        } else if (canhA ** 2 === (canhB**2 + canhC**2) || canhB**2 === (canhA**2 + canhC**2) || canhC**2 === (canhA**2 + canhB**2)) {
-            alert('Đây là tam giác vuông');
-        } else {
-            alert('Đây là tam giác thường');
+    if(canhA + canhB > canhC && canhB + canhC > canhA && canhA + canhC > canhB){
+        if(canhA === canhB && canhB === canhC){
+            alert('đây là tam giac đều')
+        } else if(canhA === canhB || canhA === canhC || canhB === canhC) 
+        {
+            alert('Đây là tam giác cân')
+        } else if(canhA ** 2 === (canhB**2 + canhC**2) || canhB**2===(canhA**2 + canhC**2 || canhC**2 === canhA**2 + canhB**2))
+        {
+            alert('Đây là tam giác vuông')
+        } else{
+            alert('Đây là tam giác thường')
         }
-    } else {
-        alert('3 cạnh trên không tạo thành một tam giác');
+    }else{
+        alert('3 cạnh trên không tạo thành một tam giác')
     }
 }
-
-// Gọi hàm để kiểm tra tam giác và nhập số
-kiemtratamgiac();
-
 
 
 // bài tập vòng lập while cơ bản
@@ -226,14 +209,14 @@ function tinhTong() {
     alert('Tổng số chẵn từ 1 đến ' + numberN + " bằng : " + Tong);
 }
 
-
+ 
 function kiemtraEmail() {
     const email = prompt('Nhập Email: ');
 
    
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const dinhDang = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // định dạng để kiểm tra email
 
-    if (emailPattern.test(email)) {
+    if (dinhDang.test(email)) { // sử dụng hàm test để kiểm tra xem địa chỉ nhập vào có khớp với định dạng dinhDang hay không
         alert('Email hợp lệ')
     } else {
         alert('Email không hợp lệ')
@@ -241,5 +224,44 @@ function kiemtraEmail() {
     }
 }
 
+// for...in sử dụng để duyệt mảng hoặc object
 
- 
+const person  = {   // khai báo dạng object
+    ten : 'Kien',
+    tuoi : 20,
+    diaChi :'HN',
+    sdt: 123456,
+}
+
+const arr=['a', 'b','c'];
+   
+for(const kin in arr){
+    console.log(kin)
+}
+
+
+
+
+
+// nhập vào danh sách tên và sắp xếp theo thứ tự alphaB
+
+function Sapxep() {
+    
+    let SoLuong, x;  // khai báo biến SoLuong và x
+const DanhSach =  Array(100);  // khai báo mảng có số lượng tối đa là 100, mảng đc dùng để lưu trữ tên người dùng
+SoLuong = prompt("Nhập số lượng : ", 3); // nhập số lượng 3/100
+
+for (i=0; i < SoLuong; i++)   //chạy vòng lặp
+{
+    DanhSach[i] = prompt("Nhập vào họ tên: ",""); //tên sẽ được truyền vào trong mảng với vị trí i
+}
+
+DanhSach.sort(); // sử dụng hàm sort để sắp xếp
+
+document.write("<h1>Danh sách đã sắp xếp là </h1>");
+for (x in DanhSach)  
+{
+document.write( DanhSach[x] );// in ra danh sách
+document.write("<BR>"); 
+}
+}
