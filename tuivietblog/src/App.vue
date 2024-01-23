@@ -1,25 +1,15 @@
-<template>
-  <HomePage></HomePage>
-</template>
+<script setup>
 
-<script>
-import HomePage from './components/Homepage/HomePage.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HomePage
-  }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<template>
+  
+<!-- sao ko đổi màu nhỉ -->
+  <div class="text-3xl font-bold underline">
+    Hello Kiennt !
+  </div>
+</template>
+
+<style scoped>
+
 </style>
