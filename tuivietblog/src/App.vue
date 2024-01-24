@@ -3,11 +3,10 @@
 </script>
 
 <template>
-  
-<!-- sao ko đổi màu nhỉ -->
-  <div class="text-3xl font-bold underline">
-    Hello Kiennt !
-  </div>
+
+<div class="text-3xl font-bold underline text-red-700">
+  tui viet blog
+</div>
 </template>
 
 <style scoped>
