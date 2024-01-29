@@ -1,19 +1,18 @@
 <script setup lang="ts">
+import HomePage from "./components/HomePage/HomePage.vue";
 </script>
 
 <template >
-  <div class="text-3xl font-bold underline bg-teal-400 ">
-Tui Viet Blog
-  </div>
-  <div class="text-3xl font-bold underline bg-teal-400 ">
-Tui Viet Blog
-  </div>
-  <div class="text-3xl font-bold underline bg-teal-400 ">
-Tui Viet Blog
-  </div>
-  <span class="text-2xl ">Kiennnt</span>
+
+  <HomePage></HomePage>
 </template>
 
-<style scoped>
+<style>
+html.dark{
+  color-scheme: dark;
+}
+body{
+  @apply bg-slate-50 text-slate-800 dark:bg-slate-600 dark:text-slate-50
+}
 
 </style>
