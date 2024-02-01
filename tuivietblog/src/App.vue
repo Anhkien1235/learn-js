@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import HomePage from "./components/HomePage/HomePage.vue";
+import TestPinia from "./components/testPinia.vue";
 </script>
 
 <template >
 
   <HomePage></HomePage>
+  <test-pinia></test-pinia>
 </template>
 
 <style>
